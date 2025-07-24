@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Smart Calculator CLI - 30일 uv Python 챌린지</title>
+    <meta name="description" content="Interactive calculator with history and math functions">
+    <meta name="author" content="Reasonofmoon">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Day 1: Smart Calculator CLI">
+    <meta property="og:description" content="Interactive calculator with history and math functions">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reasonofmoon.github.io/30-day-uv-python-challenge/day01.html">
+    
+    <!-- CSS Styling -->
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --accent-color: #f59e0b;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --code-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--code-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .content {
+            line-height: 1.8;
+        }
+        
+        .content h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .content h2 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin: 2rem 0 1rem 0;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        
+        .content h3 {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        .content h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        .content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .content ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .content pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+        }
+        
+        .content code {
+            background-color: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom-color 0.2s;
+        }
+        
+        .content a:hover {
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .meta-info {
+            background-color: var(--code-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .meta-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--secondary-color);
+        }
+        
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Day 1: Smart Calculator CLI</h1>
+            <div class="subtitle">30일 uv Python 마스터 챌린지 - Day 1/30</div>
+        </header>
+        
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">← 메인으로</a>
+            <a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge" class="nav-link">GitHub 소스코드</a>
+            <a href="day02.html" class="nav-link">다음 Day →</a>
+        </nav>
+        
+        <main class="content">
+            <p><h1>🧮 Day 1: uv로 60분 만에 스마트 계산기 CLI 만들기</h1></p><p>> <strong>30일 uv Python 마스터 챌린지 - Day 1/30</strong>  
+> <strong>테마</strong>: CLI 개발 & 현대적 Python 도구</p><p>처음으로 uv 패키지 매니저를 사용해서 실무급 CLI 애플리케이션을 만들어봤다. 60분 만에 테스트까지 완벽한 스마트 계산기를 완성했는데, 그 과정을 모두 기록해봤다.</p><p>---</p><p><h2>🎯 오늘의 목표</h2></p><p><strong>기능이 풍부한 명령줄 계산기</strong>를 만들어서 현대적인 Python 개발 관행을 배우자.</p><p><h3>사용한 핵심 도구들</h3></p><p><ul><li><strong>uv</strong>: 차세대 Python 패키지 매니저</li><li><strong>typer</strong>: 현대적 CLI 프레임워크</li><li><strong>rich</strong>: 터미널 UI 라이브러리</li><li><strong>pytest</strong>: 테스트 프레임워크</li></ul></p><p>---</p><p><h2>⏰ 개발 과정 (실제 60분 기록)</h2></p><p><h3><strong>1단계: 프로젝트 셋업 (10분)</strong></h3></p><p>처음 uv를 사용해보는 거라 설치부터 시작했다.</p><p><pre><code class="language-bash"><h1>uv 설치 확인</h1>
+uv --version</p><p><h1>프로젝트 생성</h1>
+mkdir day01-smart-calculator
+cd day01-smart-calculator
+uv init</p><p><h1>필요한 패키지 설치</h1>
+uv add rich typer
+uv add --dev pytest pytest-cov ruff black</code></pre></p><p><strong>첫 인상:</strong> uv가 정말 빠르다! pip 대비 10배는 빠른 것 같다.</p><p><h3><strong>2단계: 핵심 기능 구현 (30분)</strong></h3></p><p><h4><strong>계산기 엔진 설계</strong></h4></p><p>객체지향으로 설계하기로 했다. <code>SmartCalculator</code> 클래스에 모든 기능을 담았다.</p><p><pre><code class="language-python">class SmartCalculator:
+    def __init__(self):
+        self.history: List[Dict[str, Any]] = []
+        self.memory: float = 0.0
+    
+    def evaluate(self, expression: str) -> float:
+        # 수학 함수 처리
+        expression = self._process_functions(expression)
+        
+        # 안전한 계산
+        result = eval(expression)  # 보안 검증 포함
+        
+        # 히스토리 저장
+        self.history.append({
+            'expression': original_expr,
+            'result': result,
+            'timestamp': datetime.now().isoformat()
+        })
+        
+        return result</code></pre></p><p><strong>가장 어려웠던 부분:</strong> 정규표현식으로 입력 검증하기</p><p><h4><strong>CLI 인터페이스 구현</strong></h4></p><p>처음에는 typer와 rich를 사용하려 했지만, Windows 호환성 문제로 간단한 방식으로 변경했다.</p><p><pre><code class="language-python">def main():
+    if len(sys.argv) < 2:
+        print("Smart Calculator")
+        print("Usage:")
+        print("  python main.py calculate '2 + 3'")
+        print("  python main.py interactive")
+        return
+    
+    command = sys.argv[1]
+    calc = SmartCalculator()
+    
+    if command == "calculate":
+        expression = sys.argv[2]
+        try:
+            result = calc.evaluate(expression)
+            print(f"Result: {expression} = {result}")
+        except CalculatorError as e:
+            print(f"Error: {e}")</code></pre></p><p><h3><strong>3단계: 테스트 작성 (15분)</strong></h3></p><p>TDD(Test-Driven Development)를 처음 시도해봤다.</p><p><pre><code class="language-python">def test_basic_arithmetic():
+    calc = SmartCalculator()
+    
+    assert calc.evaluate("2 + 3") == 5
+    assert calc.evaluate("sqrt(16)") == 4</p><p>def test_error_handling():
+    calc = SmartCalculator()
+    
+    with pytest.raises(CalculatorError):
+        calc.evaluate("1 / 0")</code></pre></p><p><strong>배운 점:</strong> 테스트를 먼저 작성하니까 버그를 미리 찾을 수 있었다.</p><p><h3><strong>4단계: 실행 및 디버깅 (5분)</strong></h3></p><p><pre><code class="language-bash"><h1>테스트 실행</h1>
+uv run pytest tests/ -v</p><p><h1>실제 실행</h1>
+uv run python src/smart_calculator/main.py calculate "sqrt(16)"</code></pre></p><p>---</p><p><h2>🐛 만난 문제들과 해결 과정</h2></p><p><h3><strong>문제 1: ImportError - SmartCalculator를 찾을 수 없음</strong></h3></p><p><pre><code class="language-">ImportError: cannot import name 'SmartCalculator' from 'src.smart_calculator.calculator'</code></pre></p><p><strong>원인:</strong> calculator.py 파일에 코드가 제대로 저장되지 않았음</p><p><strong>해결:</strong> 파일을 다시 열어서 코드를 완전히 복사-붙여넣기</p><p><h3><strong>문제 2: 정규표현식 검증 오류</strong></h3></p><p><pre><code class="language-">CalculatorError: 허용되지 않은 문자가 포함되어 있습니다</code></pre></p><p><strong>원인:</strong> <code>sqrt(16)</code> → <code>math.sqrt(16)</code>으로 변환된 후, <code>math</code>라는 문자가 정규식에서 허용되지 않음</p><p><strong>해결:</strong> 정규식을 <code>r'^[0-9+\-<em>/().\s]+</code>에서 <code>r'^[0-9+\-</em>/().\sa-z_]+</code>로 수정</p><p><h3><strong>문제 3: Unicode 인코딩 에러</strong></h3></p><p><pre><code class="language-">UnicodeEncodeError: 'cp949' codec can't encode character '\U0001f9ee'</code></pre></p><p><strong>원인:</strong> Windows 터미널에서 이모지 문자 지원 안 됨</p><p><strong>해결:</strong> 모든 이모지를 일반 텍스트로 교체</p><p>---</p><p><h2>🎉 완성된 결과물</h2></p><p><h3><strong>단일 계산 모드</strong></h3></p><p><pre><code class="language-bash">$ uv run python src/smart_calculator/main.py calculate "sqrt(16)"
+Result: sqrt(16) = 4.0</p><p>$ uv run python src/smart_calculator/main.py calculate "(5 + 3) * 2"
+Result: (5 + 3) * 2 = 16</code></pre></p><p><h3><strong>대화형 모드</strong></h3></p><p><pre><code class="language-">Interactive Calculator Mode
+Type 'quit' to exit.</p><p>calc> 2 + 3 * 4
+= 14
+calc> sqrt(25)
+= 5.0
+calc> pi * 2
+= 6.283185307179586
+calc> history
+Calculation History:
+  1. 2 + 3 * 4 = 14
+  2. sqrt(25) = 5.0
+  3. pi * 2 = 6.283185307179586
+calc> quit
+Goodbye!</code></pre></p><p><h3><strong>테스트 결과</strong></h3></p><p><pre><code class="language-bash">$ uv run pytest tests/ -v
+===== test session starts =====
+tests/test_calculator.py::test_basic_arithmetic PASSED      [ 20%]
+tests/test_calculator.py::test_complex_expressions PASSED   [ 40%]
+tests/test_calculator.py::test_functions PASSED             [ 60%]
+tests/test_calculator.py::test_history PASSED               [ 80%]
+tests/test_calculator.py::test_error_handling PASSED        [100%]</p><p>===== 5 passed in 0.05s =====</code></pre></p><p>---</p><p><h2>💡 배운 점들</h2></p><p><h3><strong>기술적 측면</strong></h3></p><p>1. <strong>uv의 강력함</strong>: pip + venv + pip-tools를 하나로 통합한 혁신적 도구
+2. <strong>모던 Python 개발</strong>: 깔끔한 프로젝트 구조와 의존성 관리
+3. <strong>TDD의 중요성</strong>: 테스트 먼저 작성하니 더 안정적인 코드 작성
+4. <strong>에러 처리의 중요성</strong>: 사용자 친화적인 예외 메시지의 가치
+5. <strong>정규표현식</strong>: 입력 검증에서 핵심적인 역할</p><p><h3><strong>개발 프로세스 측면</strong></h3></p><p>1. <strong>작은 단위로 개발</strong>: 한 번에 모든 걸 만들려 하지 말고 단계별로
+2. <strong>문제 해결 능력</strong>: 에러 메시지를 꼼꼼히 읽고 원인 파악하기
+3. <strong>문서화의 중요성</strong>: 코드에 주석과 docstring 작성 습관
+4. <strong>도구 활용</strong>: 좋은 도구를 사용하면 개발 효율성이 10배 향상</p><p><h3><strong>개인적 성장</strong></h3></p><p>1. <strong>자신감 향상</strong>: "나도 실무급 도구를 만들 수 있구나!"
+2. <strong>문제 해결 인내심</strong>: 에러가 나도 차근차근 해결하는 능력
+3. <strong>학습 욕구</strong>: 더 많은 기능을 추가하고 싶어짐</p><p>---</p><p><h2>🏗️ 프로젝트 구조</h2></p><p>최종적으로 완성된 프로젝트 구조:</p><p><pre><code class="language-">day01-smart-calculator/
+├── src/
+│   └── smart_calculator/
+│       ├── __init__.py
+│       ├── main.py          # CLI 진입점
+│       ├── calculator.py    # 핵심 계산기 클래스
+│       └── cli.py          # CLI 유틸리티
+├── tests/
+│   ├── __init__.py
+│   └── test_calculator.py  # 테스트 스위트
+├── pyproject.toml          # uv 프로젝트 설정
+├── uv.lock                # 의존성 잠금 파일
+└── README.md              # 프로젝트 문서</code></pre></p><p>---</p><p><h2>🔥 앞으로의 계획</h2></p><p><h3><strong>Day 2 예고: 웹 크롤러 프로젝트</strong></h3>
+<ul><li>requests + BeautifulSoup4로 실전 웹 스크래핑</li><li>뉴스 헤드라인 자동 수집</li><li>pandas로 데이터 분석 및 CSV 저장</li><li>스케줄링으로 자동화</li></ul></p><p><h3><strong>30일 챌린지 로드맵</strong></h3>
+<ul><li><strong>Week 1</strong>: 기초 도구들 (계산기, 크롤러, 스크립트)</li><li><strong>Week 2</strong>: 웹 애플리케이션 (FastAPI, 데이터베이스)</li><li><strong>Week 3</strong>: 데이터 사이언스 (분석, 시각화)</li><li><strong>Week 4</strong>: 실무 프로젝트 (통합 시스템, 오픈소스 기여)</li></ul></p><p>---</p><p><h2>🎯 마무리</h2></p><p><strong>60분 만에 실무급 CLI 애플리케이션을 완성</strong>했다는 게 아직도 신기하다.</p><p>특히 uv의 빠른 속도와 간편함, 체계적인 테스트 작성, 실제 동작하는 인터랙티브 인터페이스가 인상 깊었다.</p><p>무엇보다 <strong>"처음부터 끝까지 완성했다"</strong>는 성취감이 크다. 테스트까지 작성하고, 에러도 해결하고, 실제로 작동하는 프로그램을 만들었다.</p><p><strong>Day 1에서 이 정도라면, 30일 후에는 얼마나 성장해있을까?</strong> 정말 기대된다! 🚀</p><p>---</p><p><h2>📝 소스코드</h2></p><p>전체 소스코드는 GitHub에 올려뒀다: <a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge">30-day-uv-python-challenge</a></p><p><pre><code class="language-bash"><h1>직접 실행해보고 싶다면</h1>
+git clone https://github.com/Reasonofmoon/30-day-uv-python-challenge.git
+cd 30-day-uv-python-challenge/day01-smart-calculator
+uv sync
+uv run python src/smart_calculator/main.py interactive</code></pre></p><p>---</p><p><strong>다음 포스팅은 Day 2 - 웹 크롤러 개발기로 찾아뵙겠습니다!</strong> </p><p><strong>함께 성장하는 개발자가 되어요! 💪</strong></p><p>---</p><p><em>#Python #uv #CLI #개발일기 #30일챌린지 #초보개발자 #계산기 #pytest</em></p><p>---</p><p><strong>Created by <a href="https://v0-neobrutalist-ui-design-sigma-seven.vercel.app/">Reasonofmoon</a> | uv Python Developer Journey</strong></p>
+        </main>
+        
+        <div class="meta-info">
+            <h3>프로젝트 정보</h3>
+            <p><strong>기술 스택:</strong> uv, pytest, argparse, math</p>
+            <p><strong>개발 시간:</strong> 60분</p>
+            <p><strong>테스트 커버리지:</strong> 80%+</p>
+            <p><strong>프로젝트 링크:</strong> <a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge/tree/main/day01-smart-calculator">GitHub에서 보기</a></p>
+        </div>
+        
+        <div class="tags">
+            <span class="tag">#uv</span> <span class="tag">#pytest</span> <span class="tag">#argparse</span> <span class="tag">#math</span> <span class="tag">#Python</span> <span class="tag">#uv</span> <span class="tag">#30일챌린지</span> <span class="tag">#개발일기</span>
+        </div>
+        
+        <footer class="footer">
+            <p>30일 uv Python 마스터 챌린지 | 
+            <a href="https://github.com/Reasonofmoon">Reasonofmoon</a> | 
+            2025년 07월 24일</p>
+            <p>Built with ❤️ and Python</p>
+        </footer>
+    </div>
+</body>
+</html>
