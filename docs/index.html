@@ -7,11 +7,12 @@
     <meta name="description" content="30일간의 Python 개발 여정을 기록한 블로그">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Same CSS variables and base styles as blog pages */
         :root {
             --primary-color: #2563eb;
             --secondary-color: #64748b;
             --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
             --text-color: #1f2937;
             --bg-color: #ffffff;
             --code-bg: #f8fafc;
@@ -27,7 +28,7 @@
             background-color: var(--bg-color);
         }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
         .header {
             text-align: center;
@@ -41,42 +42,6 @@
         .header h1 { font-size: 3rem; margin-bottom: 1rem; }
         .header p { font-size: 1.2rem; opacity: 0.9; }
         
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .blog-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        
-        .blog-card h3 { margin-bottom: 1rem; }
-        .blog-card h3 a { color: var(--primary-color); text-decoration: none; }
-        .blog-card h3 a:hover { text-decoration: underline; }
-        
-        .blog-card p { color: var(--secondary-color); margin-bottom: 1rem; }
-        
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tech-tag {
-            background: var(--code-bg);
-            color: var(--primary-color);
-            padding: 0.3rem 0.6rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border-color);
-        }
-        
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -89,10 +54,110 @@
             padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
+            border: 1px solid var(--border-color);
         }
         
         .stat-number { font-size: 2rem; font-weight: bold; color: var(--primary-color); }
         .stat-label { color: var(--secondary-color); }
+        
+        .week-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .week-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .week-description {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .day-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .day-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .day-card.completed {
+            background: linear-gradient(135deg, #ecfeff, #f0f9ff);
+            border-color: var(--success-color);
+        }
+        
+        .day-card.in-progress {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: var(--warning-color);
+        }
+        
+        .day-card.pending {
+            background: #f9fafb;
+            border-color: var(--border-color);
+        }
+        
+        .day-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .day-card h4 { margin-bottom: 0.5rem; }
+        .day-card h4 a { color: var(--primary-color); text-decoration: none; }
+        .day-card h4 a:hover { text-decoration: underline; }
+        
+        .day-card p { color: var(--secondary-color); margin-bottom: 1rem; font-size: 0.9rem; }
+        
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tech-tag {
+            background: var(--code-bg);
+            color: var(--primary-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .quick-nav a {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        
+        .quick-nav a:hover {
+            background: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .day-grid { grid-template-columns: 1fr; }
+            .quick-nav { flex-direction: column; align-items: center; }
+        }
     </style>
 </head>
 <body>
@@ -115,31 +180,307 @@
                 <div class="stat-number">8</div>
                 <div class="stat-label">학습한 기술</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">진행 주차</div>
+            </div>
         </div>
         
-        <div class="blog-grid">
-            
-                <div class="blog-card">
-                    <h3><a href="day01.html">Day 1: Smart Calculator CLI</a></h3>
-                    <p>Interactive calculator with history and math functions</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">uv</span> <span class="tech-tag">pytest</span> <span class="tech-tag">argparse</span> <span class="tech-tag">math</span>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <h3><a href="day02.html">Day 2: Web Scraper CLI</a></h3>
-                    <p>Multi-site news headline scraper with data export</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">requests</span> <span class="tech-tag">beautifulsoup4</span> <span class="tech-tag">pandas</span> <span class="tech-tag">lxml</span>
-                    </div>
-                </div>
-                
+        <div class="quick-nav">
+            <a href="#week-1">Week 1: Foundation</a>
+            <a href="#week-2">Week 2: Web Apps</a>
+            <a href="#week-3">Week 3: Data</a>
+            <a href="#week-4">Week 4: Advanced</a>
+            <a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge">💻 GitHub</a>
         </div>
         
-        <footer style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid var(--border-color);">
-            <p><a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge">GitHub 소스코드</a> | 
-            <a href="https://github.com/Reasonofmoon">Reasonofmoon</a></p>
+        
+                <section class="week-section" id="week-1">
+                    <h2>Week 1: Foundation Tools</h2>
+                    <p class="week-description">CLI applications and basic automation tools</p>
+                    <div class="day-grid">
+                        
+                        <div class="day-card completed">
+                            <h4><a href="day01.html">✅ Day 1: Smart Calculator CLI</a></h4>
+                            <p>Interactive calculator with history and math functions</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">uv</span> <span class="tech-tag">pytest</span> <span class="tech-tag">argparse</span> <span class="tech-tag">math</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card completed">
+                            <h4><a href="day02.html">✅ Day 2: Web Scraper CLI</a></h4>
+                            <p>Multi-site news headline scraper with data export</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">requests</span> <span class="tech-tag">beautifulsoup4</span> <span class="tech-tag">pandas</span> <span class="tech-tag">lxml</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 3: Task Manager CLI</h4>
+                            <p>SQLite-based task management with rich terminal UI</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">sqlite3</span> <span class="tech-tag">rich</span> <span class="tech-tag">typer</span> <span class="tech-tag">sqlalchemy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 4: File Organizer CLI</h4>
+                            <p>Automated file organization and cleanup tool</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">pathlib</span> <span class="tech-tag">shutil</span> <span class="tech-tag">click</span> <span class="tech-tag">watchdog</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 5: Password Manager CLI</h4>
+                            <p>Secure password generation and storage system</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">cryptography</span> <span class="tech-tag">keyring</span> <span class="tech-tag">typer</span> <span class="tech-tag">secrets</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 6: Weather Dashboard CLI</h4>
+                            <p>Real-time weather data with rich terminal dashboard</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">requests</span> <span class="tech-tag">rich</span> <span class="tech-tag">asyncio</span> <span class="tech-tag">typer</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 7: Week 1 Review & Integration</h4>
+                            <p>Testing, refactoring, and integration of Week 1 projects</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">pytest</span> <span class="tech-tag">tox</span> <span class="tech-tag">coverage</span> <span class="tech-tag">black</span> <span class="tech-tag">ruff</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                
+                <section class="week-section" id="week-2">
+                    <h2>Week 2: Web Applications</h2>
+                    <p class="week-description">REST APIs, databases, and web services</p>
+                    <div class="day-grid">
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 8: FastAPI REST API</h4>
+                            <p>Modern REST API with automatic documentation</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi</span> <span class="tech-tag">pydantic</span> <span class="tech-tag">uvicorn</span> <span class="tech-tag">httpx</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 9: Database Integration</h4>
+                            <p>SQLAlchemy ORM with PostgreSQL and migrations</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">sqlalchemy</span> <span class="tech-tag">alembic</span> <span class="tech-tag">postgresql</span> <span class="tech-tag">asyncpg</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 10: Authentication System</h4>
+                            <p>JWT-based authentication with user management</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi-users</span> <span class="tech-tag">jwt</span> <span class="tech-tag">bcrypt</span> <span class="tech-tag">oauth2</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 11: File Upload Service</h4>
+                            <p>Scalable file upload with MinIO and background processing</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi</span> <span class="tech-tag">minio</span> <span class="tech-tag">celery</span> <span class="tech-tag">redis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 12: Real-time Chat App</h4>
+                            <p>WebSocket-based chat with Redis pub/sub</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi</span> <span class="tech-tag">websockets</span> <span class="tech-tag">redis</span> <span class="tech-tag">socketio</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 13: API Testing Suite</h4>
+                            <p>Comprehensive API testing with factories and fixtures</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">httpx</span> <span class="tech-tag">pytest-asyncio</span> <span class="tech-tag">factory-boy</span> <span class="tech-tag">faker</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 14: Week 2 Review & Performance</h4>
+                            <p>Performance testing and optimization of web applications</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">locust</span> <span class="tech-tag">pytest-benchmark</span> <span class="tech-tag">memory-profiler</span> <span class="tech-tag">cachetools</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                
+                <section class="week-section" id="week-3">
+                    <h2>Week 3: Data & Analysis</h2>
+                    <p class="week-description">Data processing, visualization, and reporting tools</p>
+                    <div class="day-grid">
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 15: Data Pipeline Builder</h4>
+                            <p>ETL pipeline with Pandas, Dask, and Apache Airflow</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">pandas</span> <span class="tech-tag">dask</span> <span class="tech-tag">apache-airflow</span> <span class="tech-tag">sqlalchemy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 16: Excel Report Generator</h4>
+                            <p>Automated Excel reports with charts and formatting</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">openpyxl</span> <span class="tech-tag">jinja2</span> <span class="tech-tag">matplotlib</span> <span class="tech-tag">pandas</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 17: Analytics Dashboard</h4>
+                            <p>Interactive dashboard with Streamlit and Plotly</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">streamlit</span> <span class="tech-tag">plotly</span> <span class="tech-tag">pandas</span> <span class="tech-tag">numpy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 18: Email Automation</h4>
+                            <p>Email sending service with templates and scheduling</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi-mail</span> <span class="tech-tag">jinja2</span> <span class="tech-tag">celery</span> <span class="tech-tag">redis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 19: PDF Report Generator</h4>
+                            <p>PDF generation with ReportLab and WeasyPrint</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">reportlab</span> <span class="tech-tag">weasyprint</span> <span class="tech-tag">jinja2</span> <span class="tech-tag">matplotlib</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 20: Data Visualization Tool</h4>
+                            <p>Comprehensive data visualization with multiple libraries</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">matplotlib</span> <span class="tech-tag">seaborn</span> <span class="tech-tag">plotly</span> <span class="tech-tag">bokeh</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 21: Week 3 Review & Integration</h4>
+                            <p>Data pipeline integration and performance optimization</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">pytest</span> <span class="tech-tag">pandas</span> <span class="tech-tag">dask</span> <span class="tech-tag">profiling</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                
+                <section class="week-section" id="week-4">
+                    <h2>Week 4: Advanced Projects</h2>
+                    <p class="week-description">DevOps, testing, security, and capstone project</p>
+                    <div class="day-grid">
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 22: Docker Deployment</h4>
+                            <p>Containerization and orchestration with Docker</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">docker</span> <span class="tech-tag">docker-compose</span> <span class="tech-tag">nginx</span> <span class="tech-tag">postgresql</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 23: GitHub Actions CI/CD</h4>
+                            <p>Automated testing and deployment pipeline</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">github-actions</span> <span class="tech-tag">pytest</span> <span class="tech-tag">black</span> <span class="tech-tag">ruff</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 24: Monitoring & Logging</h4>
+                            <p>Application monitoring with Prometheus and Grafana</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">prometheus</span> <span class="tech-tag">grafana</span> <span class="tech-tag">loguru</span> <span class="tech-tag">structlog</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 25: Performance Testing</h4>
+                            <p>Load testing and performance analysis</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">locust</span> <span class="tech-tag">pytest-benchmark</span> <span class="tech-tag">memory-profiler</span> <span class="tech-tag">py-spy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 26: Security Scanner</h4>
+                            <p>Automated security analysis and vulnerability scanning</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">bandit</span> <span class="tech-tag">safety</span> <span class="tech-tag">semgrep</span> <span class="tech-tag">owasp-zap</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 27: Open Source Contribution</h4>
+                            <p>Contributing to open source projects with proper workflow</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">github</span> <span class="tech-tag">pre-commit</span> <span class="tech-tag">tox</span> <span class="tech-tag">mypy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 28: Capstone Project - Phase 1</h4>
+                            <p>Full-stack application combining all learned technologies</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi</span> <span class="tech-tag">react</span> <span class="tech-tag">postgresql</span> <span class="tech-tag">docker</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                
+                <section class="week-section" id="week-5">
+                    <h2>Week 5: Week 5</h2>
+                    <p class="week-description">Advanced challenges for week 5</p>
+                    <div class="day-grid">
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 29: Capstone Project - Phase 2</h4>
+                            <p>Frontend integration and advanced features</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">fastapi</span> <span class="tech-tag">react</span> <span class="tech-tag">websockets</span> <span class="tech-tag">redis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="day-card pending">
+                            <h4>📋 Day 30: Capstone Project - Completion</h4>
+                            <p>Deployment, documentation, and project showcase</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">docker</span> <span class="tech-tag">github-actions</span> <span class="tech-tag">monitoring</span> <span class="tech-tag">documentation</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                
+        
+        <footer style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid var(--border-color); color: var(--secondary-color);">
+            <p><strong>30일 uv Python 마스터 챌린지</strong></p>
+            <p><a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge" style="color: var(--primary-color);">GitHub 소스코드</a> | 
+            <a href="https://github.com/Reasonofmoon" style="color: var(--primary-color);">Reasonofmoon</a></p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Built with ❤️ and Python | 2025년 07월</p>
         </footer>
     </div>
 </body>

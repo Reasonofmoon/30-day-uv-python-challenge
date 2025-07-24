@@ -210,6 +210,22 @@
             text-decoration: none;
         }
         
+        .breadcrumb {
+            margin: 1rem 0 2rem 0;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -246,10 +262,17 @@
         </header>
         
         <nav class="navigation">
-            <a href="index.html" class="nav-link">← 메인으로</a>
-            <a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge" class="nav-link">GitHub 소스코드</a>
-            <a href="day03.html" class="nav-link">다음 Day →</a>
+            <a href="day01.html" class="nav-link">← Day 1: Smart Calculator CLI...</a>
+            <a href="index.html" class="nav-link">📚 전체 목록</a>
+            <a href="https://github.com/Reasonofmoon/30-day-uv-python-challenge" class="nav-link">💻 GitHub</a>
+            <a href="day03.html" class="nav-link">Day 3: Task Manager CLI... →</a>
         </nav>
+        
+        <div class="breadcrumb">
+            <a href="index.html">홈</a> > 
+            <a href="#week-1">Week 1</a> > 
+            <span>Day 2</span>
+        </div>
         
         <main class="content">
             <p><h1>🕷️ Day 2: 웹 스크래퍼로 60분 만에 뉴스 헤드라인 수집기 만들기</h1></p><p>> <strong>30일 uv Python 마스터 챌린지 - Day 2/30</strong>  
