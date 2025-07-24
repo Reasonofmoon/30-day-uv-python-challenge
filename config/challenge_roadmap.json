@@ -1,0 +1,676 @@
+{
+  "challenge_info": {
+    "name": "30-Day uv Python Mastery Challenge", 
+    "description": "Building practical Python applications with modern tools",
+    "duration_days": 30,
+    "target_time_per_day": 60,
+    "repository": "https://github.com/Reasonofmoon/30-day-uv-python-challenge"
+  },
+  "weeks": {
+    "week1": {
+      "name": "Foundation Tools",
+      "description": "CLI applications and basic automation tools",
+      "days": [1, 2, 3, 4, 5, 6, 7]
+    },
+    "week2": {
+      "name": "Web Applications", 
+      "description": "REST APIs, databases, and web services",
+      "days": [8, 9, 10, 11, 12, 13, 14]
+    },
+    "week3": {
+      "name": "Data & Analysis",
+      "description": "Data processing, visualization, and reporting tools", 
+      "days": [15, 16, 17, 18, 19, 20, 21]
+    },
+    "week4": {
+      "name": "Advanced Projects",
+      "description": "DevOps, testing, security, and capstone project",
+      "days": [22, 23, 24, 25, 26, 27, 28, 29, 30]
+    }
+  },
+  "challenges": {
+    "day01": {
+      "name": "Smart Calculator CLI",
+      "description": "Interactive calculator with history and math functions",
+      "status": "completed",
+      "tech_stack": ["uv", "pytest", "argparse", "math"],
+      "dependencies": ["pytest", "pytest-cov"],
+      "type": "cli-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "uv package manager basics",
+        "CLI development with argparse", 
+        "Test-driven development with pytest",
+        "Mathematical expression evaluation"
+      ],
+      "success_criteria": {
+        "min_tests": 5,
+        "min_coverage": 80,
+        "features": ["basic_arithmetic", "math_functions", "history", "interactive_mode"]
+      }
+    },
+    "day02": {
+      "name": "Web Scraper CLI",
+      "description": "Multi-site news headline scraper with data export",
+      "status": "completed", 
+      "tech_stack": ["requests", "beautifulsoup4", "pandas", "lxml"],
+      "dependencies": ["requests", "beautifulsoup4", "pandas", "lxml", "pytest", "pytest-cov"],
+      "type": "cli-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Web scraping with requests and BeautifulSoup",
+        "Data processing with pandas",
+        "CSV export and data analysis",
+        "Ethical scraping practices"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 85, 
+        "features": ["multi_site_scraping", "csv_export", "interactive_mode", "error_handling"]
+      }
+    },
+    "day03": {
+      "name": "Task Manager CLI",
+      "description": "SQLite-based task management with rich terminal UI",
+      "status": "pending",
+      "tech_stack": ["sqlite3", "rich", "typer", "sqlalchemy"],
+      "dependencies": ["rich", "typer", "sqlalchemy", "pytest", "pytest-cov"],
+      "type": "cli-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "SQLite database integration",
+        "Rich terminal UI components",
+        "CRUD operations with SQLAlchemy",
+        "Data persistence and migrations"
+      ],
+      "success_criteria": {
+        "min_tests": 12,
+        "min_coverage": 80,
+        "features": ["task_crud", "priority_management", "due_dates", "rich_ui", "data_export"]
+      }
+    },
+    "day04": {
+      "name": "File Organizer CLI", 
+      "description": "Automated file organization and cleanup tool",
+      "status": "pending",
+      "tech_stack": ["pathlib", "shutil", "click", "watchdog"],
+      "dependencies": ["click", "watchdog", "pytest", "pytest-cov"],
+      "type": "cli-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "File system operations with pathlib",
+        "File monitoring with watchdog", 
+        "Click framework for CLI",
+        "Automated file organization strategies"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 80,
+        "features": ["auto_organize", "custom_rules", "backup_system", "monitoring"]
+      }
+    },
+    "day05": {
+      "name": "Password Manager CLI",
+      "description": "Secure password generation and storage system",
+      "status": "pending", 
+      "tech_stack": ["cryptography", "keyring", "typer", "secrets"],
+      "dependencies": ["cryptography", "keyring", "typer", "pytest", "pytest-cov"],
+      "type": "cli-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Cryptography and secure storage",
+        "Password generation algorithms",
+        "System keyring integration",
+        "Security best practices"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 90,
+        "features": ["secure_generation", "encrypted_storage", "master_password", "export_import"]
+      }
+    },
+    "day06": {
+      "name": "Weather Dashboard CLI",
+      "description": "Real-time weather data with rich terminal dashboard",
+      "status": "pending",
+      "tech_stack": ["requests", "rich", "asyncio", "typer"],
+      "dependencies": ["requests", "rich", "typer", "aiohttp", "pytest", "pytest-asyncio"],
+      "type": "cli-app", 
+      "estimated_time": 60,
+      "learning_objectives": [
+        "API integration and HTTP requests",
+        "Asynchronous programming with asyncio",
+        "Rich dashboard components",
+        "Real-time data updates"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 80,
+        "features": ["api_integration", "async_updates", "rich_dashboard", "location_search"]
+      }
+    },
+    "day07": {
+      "name": "Week 1 Review & Integration",
+      "description": "Testing, refactoring, and integration of Week 1 projects",
+      "status": "pending",
+      "tech_stack": ["pytest", "tox", "coverage", "black", "ruff"],
+      "dependencies": ["pytest", "tox", "coverage", "black", "ruff"],
+      "type": "integration",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Integration testing strategies",
+        "Code quality and linting",
+        "Refactoring techniques", 
+        "Documentation improvements"
+      ],
+      "success_criteria": {
+        "min_tests": 5,
+        "min_coverage": 90,
+        "features": ["integration_tests", "code_quality", "documentation", "performance"]
+      }
+    },
+    "day08": {
+      "name": "FastAPI REST API",
+      "description": "Modern REST API with automatic documentation",
+      "status": "pending",
+      "tech_stack": ["fastapi", "pydantic", "uvicorn", "httpx"],
+      "dependencies": ["fastapi", "pydantic", "uvicorn", "httpx", "pytest", "pytest-asyncio"],
+      "type": "web-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "FastAPI framework fundamentals",
+        "Pydantic data validation",
+        "Automatic API documentation",
+        "Asynchronous web development"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 85,
+        "features": ["crud_endpoints", "data_validation", "auto_docs", "error_handling"]
+      }
+    },
+    "day09": {
+      "name": "Database Integration",
+      "description": "SQLAlchemy ORM with PostgreSQL and migrations",
+      "status": "pending",
+      "tech_stack": ["sqlalchemy", "alembic", "postgresql", "asyncpg"],
+      "dependencies": ["sqlalchemy", "alembic", "asyncpg", "pytest", "pytest-asyncio"],
+      "type": "web-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "SQLAlchemy ORM patterns",
+        "Database migrations with Alembic", 
+        "PostgreSQL integration",
+        "Async database operations"
+      ],
+      "success_criteria": {
+        "min_tests": 12,
+        "min_coverage": 80,
+        "features": ["orm_models", "migrations", "async_queries", "relationships"]
+      }
+    },
+    "day10": {
+      "name": "Authentication System",
+      "description": "JWT-based authentication with user management",
+      "status": "pending",
+      "tech_stack": ["fastapi-users", "jwt", "bcrypt", "oauth2"],
+      "dependencies": ["fastapi-users", "python-jose", "passlib", "bcrypt", "pytest"],
+      "type": "web-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "JWT token authentication",
+        "Password hashing with bcrypt",
+        "OAuth2 implementation",
+        "User session management"
+      ],
+      "success_criteria": {
+        "min_tests": 18,
+        "min_coverage": 90,
+        "features": ["jwt_auth", "user_registration", "password_reset", "oauth2"]
+      }
+    },
+    "day11": {
+      "name": "File Upload Service",
+      "description": "Scalable file upload with MinIO and background processing",
+      "status": "pending",
+      "tech_stack": ["fastapi", "minio", "celery", "redis"],
+      "dependencies": ["fastapi", "minio", "celery", "redis", "pillow", "pytest"],
+      "type": "web-app", 
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Object storage with MinIO",
+        "Background task processing with Celery",
+        "File validation and processing",
+        "Scalable upload architecture"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 85,
+        "features": ["file_upload", "background_processing", "validation", "thumbnails"]
+      }
+    },
+    "day12": {
+      "name": "Real-time Chat App",
+      "description": "WebSocket-based chat with Redis pub/sub",
+      "status": "pending",
+      "tech_stack": ["fastapi", "websockets", "redis", "socketio"],
+      "dependencies": ["fastapi", "websockets", "redis", "python-socketio", "pytest"],
+      "type": "web-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "WebSocket implementation",
+        "Redis pub/sub messaging", 
+        "Real-time communication patterns",
+        "Connection management"
+      ],
+      "success_criteria": {
+        "min_tests": 12,
+        "min_coverage": 80,
+        "features": ["websocket_chat", "room_management", "message_persistence", "user_presence"]
+      }
+    },
+    "day13": {
+      "name": "API Testing Suite",
+      "description": "Comprehensive API testing with factories and fixtures",
+      "status": "pending",
+      "tech_stack": ["httpx", "pytest-asyncio", "factory-boy", "faker"],
+      "dependencies": ["httpx", "pytest-asyncio", "factory-boy", "faker", "pytest"],
+      "type": "testing",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "API testing strategies",
+        "Test data factories",
+        "Async test patterns", 
+        "Mock and fixture management"
+      ],
+      "success_criteria": {
+        "min_tests": 25,
+        "min_coverage": 95,
+        "features": ["integration_tests", "factories", "mocks", "performance_tests"]
+      }
+    },
+    "day14": {
+      "name": "Week 2 Review & Performance",
+      "description": "Performance testing and optimization of web applications",
+      "status": "pending",
+      "tech_stack": ["locust", "pytest-benchmark", "memory-profiler", "cachetools"],
+      "dependencies": ["locust", "pytest-benchmark", "memory-profiler", "cachetools"],
+      "type": "optimization",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Load testing with Locust",
+        "Performance profiling",
+        "Caching strategies",
+        "Database optimization"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 85,
+        "features": ["load_tests", "profiling", "caching", "optimization"]
+      }
+    },
+    "day15": {
+      "name": "Data Pipeline Builder",
+      "description": "ETL pipeline with Pandas, Dask, and Apache Airflow",
+      "status": "pending",
+      "tech_stack": ["pandas", "dask", "apache-airflow", "sqlalchemy"],
+      "dependencies": ["pandas", "dask", "apache-airflow", "sqlalchemy", "pytest"],
+      "type": "data-tool",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "ETL pipeline design",
+        "Distributed computing with Dask",
+        "Workflow orchestration",
+        "Data quality validation"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 80,
+        "features": ["etl_pipeline", "task_scheduling", "data_validation", "monitoring"]
+      }
+    },
+    "day16": {
+      "name": "Excel Report Generator",
+      "description": "Automated Excel reports with charts and formatting",
+      "status": "pending",
+      "tech_stack": ["openpyxl", "jinja2", "matplotlib", "pandas"],
+      "dependencies": ["openpyxl", "jinja2", "matplotlib", "pandas", "pytest"],
+      "type": "data-tool",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Excel automation with openpyxl",
+        "Template-based reporting",
+        "Chart generation",
+        "Data formatting and styling"
+      ],
+      "success_criteria": {
+        "min_tests": 12,
+        "min_coverage": 80,
+        "features": ["excel_generation", "charts", "formatting", "templates"]
+      }
+    },
+    "day17": {
+      "name": "Analytics Dashboard",
+      "description": "Interactive dashboard with Streamlit and Plotly",
+      "status": "pending",
+      "tech_stack": ["streamlit", "plotly", "pandas", "numpy"],
+      "dependencies": ["streamlit", "plotly", "pandas", "numpy", "pytest"],
+      "type": "web-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Interactive web apps with Streamlit",
+        "Data visualization with Plotly",
+        "Real-time dashboard updates",
+        "User interaction handling"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 75,
+        "features": ["interactive_charts", "filters", "real_time_updates", "export"]
+      }
+    },
+    "day18": {
+      "name": "Email Automation",
+      "description": "Email sending service with templates and scheduling",
+      "status": "pending", 
+      "tech_stack": ["fastapi-mail", "jinja2", "celery", "redis"],
+      "dependencies": ["fastapi-mail", "jinja2", "celery", "redis", "pytest"],
+      "type": "web-app",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Email service integration",
+        "Template-based emails",
+        "Background task scheduling",
+        "Email delivery tracking"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 85,
+        "features": ["email_sending", "templates", "scheduling", "tracking"]
+      }
+    },
+    "day19": {
+      "name": "PDF Report Generator",
+      "description": "PDF generation with ReportLab and WeasyPrint",
+      "status": "pending",
+      "tech_stack": ["reportlab", "weasyprint", "jinja2", "matplotlib"],
+      "dependencies": ["reportlab", "weasyprint", "jinja2", "matplotlib", "pytest"],
+      "type": "data-tool",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "PDF generation techniques",
+        "HTML to PDF conversion",
+        "Chart embedding",
+        "Template-based documents"
+      ],
+      "success_criteria": {
+        "min_tests": 12,
+        "min_coverage": 80,
+        "features": ["pdf_generation", "charts", "templates", "styling"]
+      }
+    },
+    "day20": {
+      "name": "Data Visualization Tool",
+      "description": "Comprehensive data visualization with multiple libraries",
+      "status": "pending",
+      "tech_stack": ["matplotlib", "seaborn", "plotly", "bokeh"],
+      "dependencies": ["matplotlib", "seaborn", "plotly", "bokeh", "pytest"],
+      "type": "data-tool",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Advanced plotting techniques",
+        "Statistical visualizations",
+        "Interactive plots",
+        "Export and sharing options"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 75,
+        "features": ["multiple_plot_types", "interactivity", "styling", "export"]
+      }
+    },
+    "day21": {
+      "name": "Week 3 Review & Integration",
+      "description": "Data pipeline integration and performance optimization",
+      "status": "pending",
+      "tech_stack": ["pytest", "pandas", "dask", "profiling"],
+      "dependencies": ["pytest", "pandas", "dask", "memory-profiler"],
+      "type": "integration",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Data pipeline optimization",
+        "Memory profiling",
+        "Performance tuning",
+        "Integration testing"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 90,
+        "features": ["integration", "optimization", "profiling", "documentation"]
+      }
+    },
+    "day22": {
+      "name": "Docker Deployment",
+      "description": "Containerization and orchestration with Docker",
+      "status": "pending",
+      "tech_stack": ["docker", "docker-compose", "nginx", "postgresql"],
+      "dependencies": ["docker", "docker-compose"],
+      "type": "devops",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Container creation and management",
+        "Multi-service orchestration",
+        "Reverse proxy configuration",
+        "Production deployment patterns"
+      ],
+      "success_criteria": {
+        "min_tests": 8,
+        "min_coverage": 70,
+        "features": ["containerization", "orchestration", "networking", "volumes"]
+      }
+    },
+    "day23": {
+      "name": "GitHub Actions CI/CD",
+      "description": "Automated testing and deployment pipeline",
+      "status": "pending",
+      "tech_stack": ["github-actions", "pytest", "black", "ruff"],
+      "dependencies": ["pytest", "black", "ruff", "coverage"],
+      "type": "devops",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "CI/CD pipeline design",
+        "Automated testing workflows",
+        "Code quality checks",
+        "Deployment automation"
+      ],
+      "success_criteria": {
+        "min_tests": 5,
+        "min_coverage": 85,
+        "features": ["ci_pipeline", "automated_tests", "quality_checks", "deployment"]
+      }
+    },
+    "day24": {
+      "name": "Monitoring & Logging",
+      "description": "Application monitoring with Prometheus and Grafana",
+      "status": "pending",
+      "tech_stack": ["prometheus", "grafana", "loguru", "structlog"],
+      "dependencies": ["prometheus-client", "loguru", "structlog", "pytest"],
+      "type": "devops",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Metrics collection and monitoring",
+        "Log aggregation and analysis", 
+        "Dashboard creation",
+        "Alerting and notifications"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 80,
+        "features": ["metrics", "logging", "dashboards", "alerts"]
+      }
+    },
+    "day25": {
+      "name": "Performance Testing",
+      "description": "Load testing and performance analysis",
+      "status": "pending", 
+      "tech_stack": ["locust", "pytest-benchmark", "memory-profiler", "py-spy"],
+      "dependencies": ["locust", "pytest-benchmark", "memory-profiler", "py-spy"],
+      "type": "testing",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Load testing strategies",
+        "Performance benchmarking",
+        "Memory profiling",
+        "Bottleneck identification"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 85,
+        "features": ["load_testing", "benchmarking", "profiling", "optimization"]
+      }
+    },
+    "day26": {
+      "name": "Security Scanner",
+      "description": "Automated security analysis and vulnerability scanning",
+      "status": "pending",
+      "tech_stack": ["bandit", "safety", "semgrep", "owasp-zap"],
+      "dependencies": ["bandit", "safety", "semgrep", "pytest"],
+      "type": "security",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Static code analysis",
+        "Dependency vulnerability scanning",
+        "Security best practices",
+        "Automated security testing"
+      ],
+      "success_criteria": {
+        "min_tests": 12,
+        "min_coverage": 90,
+        "features": ["static_analysis", "dependency_scan", "security_tests", "reporting"]
+      }
+    },
+    "day27": {
+      "name": "Open Source Contribution",
+      "description": "Contributing to open source projects with proper workflow",
+      "status": "pending",
+      "tech_stack": ["github", "pre-commit", "tox", "mypy"],
+      "dependencies": ["pre-commit", "tox", "mypy", "pytest"],
+      "type": "contribution",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Open source contribution workflow",
+        "Code quality automation",
+        "Community interaction",
+        "Documentation contribution"
+      ],
+      "success_criteria": {
+        "min_tests": 8,
+        "min_coverage": 85,
+        "features": ["contribution", "quality_checks", "documentation", "community"]
+      }
+    },
+    "day28": {
+      "name": "Capstone Project - Phase 1",
+      "description": "Full-stack application combining all learned technologies",
+      "status": "pending",
+      "tech_stack": ["fastapi", "react", "postgresql", "docker"],
+      "dependencies": ["fastapi", "uvicorn", "sqlalchemy", "alembic", "pytest"],
+      "type": "capstone",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Full-stack architecture design",
+        "Technology integration",
+        "Project planning and structure",
+        "API design and implementation"
+      ],
+      "success_criteria": {
+        "min_tests": 20,
+        "min_coverage": 85,
+        "features": ["api_backend", "database_design", "authentication", "testing"]
+      }
+    },
+    "day29": {
+      "name": "Capstone Project - Phase 2", 
+      "description": "Frontend integration and advanced features",
+      "status": "pending",
+      "tech_stack": ["fastapi", "react", "websockets", "redis"],
+      "dependencies": ["fastapi", "websockets", "redis", "pytest"],
+      "type": "capstone",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Frontend-backend integration",
+        "Real-time features",
+        "Advanced state management",
+        "Performance optimization"
+      ],
+      "success_criteria": {
+        "min_tests": 15,
+        "min_coverage": 80,
+        "features": ["frontend_integration", "real_time", "optimization", "deployment"]
+      }
+    },
+    "day30": {
+      "name": "Capstone Project - Completion",
+      "description": "Deployment, documentation, and project showcase",
+      "status": "pending",
+      "tech_stack": ["docker", "github-actions", "monitoring", "documentation"],
+      "dependencies": ["docker", "pytest", "mkdocs", "coverage"],
+      "type": "capstone",
+      "estimated_time": 60,
+      "learning_objectives": [
+        "Production deployment",
+        "Comprehensive documentation", 
+        "Project presentation",
+        "Portfolio development"
+      ],
+      "success_criteria": {
+        "min_tests": 10,
+        "min_coverage": 90,
+        "features": ["deployment", "documentation", "monitoring", "showcase"]
+      }
+    }
+  },
+  "templates": {
+    "cli-app": {
+      "structure": [
+        "src/{package_name}/__init__.py",
+        "src/{package_name}/main.py",
+        "src/{package_name}/core.py", 
+        "src/{package_name}/utils.py",
+        "tests/__init__.py",
+        "tests/test_core.py",
+        "tests/test_cli.py",
+        "tests/conftest.py"
+      ],
+      "base_dependencies": ["typer", "rich", "pytest", "pytest-cov"]
+    },
+    "web-app": {
+      "structure": [
+        "src/{package_name}/__init__.py",
+        "src/{package_name}/main.py",
+        "src/{package_name}/api.py",
+        "src/{package_name}/models.py",
+        "src/{package_name}/database.py",
+        "tests/__init__.py", 
+        "tests/test_api.py",
+        "tests/test_models.py",
+        "tests/conftest.py"
+      ],
+      "base_dependencies": ["fastapi", "uvicorn", "pydantic", "httpx", "pytest", "pytest-asyncio"]
+    },
+    "data-tool": {
+      "structure": [
+        "src/{package_name}/__init__.py",
+        "src/{package_name}/main.py",
+        "src/{package_name}/processor.py",
+        "src/{package_name}/analyzer.py",
+        "src/{package_name}/exporter.py",
+        "tests/__init__.py",
+        "tests/test_processor.py", 
+        "tests/test_analyzer.py",
+        "tests/conftest.py"
+      ],
+      "base_dependencies": ["pandas", "numpy", "matplotlib", "pytest", "pytest-cov"]
+    }
+  }
+}
